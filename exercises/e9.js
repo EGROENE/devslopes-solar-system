@@ -6,6 +6,11 @@ import { data } from "../data/data";
 
 export function getEarthData(data) {
   // Your code goes here...
+  let planetEarths = data.planets
+  .filter(function(planet) {
+    return planet.name === 'Earth';
+  })
+  return planetEarths[0]; // Returns first object in planetEarths array. If there were more than one, you could loop through it to return all objects in that array.
 }
 
 
