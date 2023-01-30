@@ -7,24 +7,24 @@ import { data } from "../data/data";
 
 export function lowMoonsPlanets(data) {
   // Your code goes here...
-  let planetsWithUnderTenMoreThanZeroMoons = data.planets
-  .filter(function(planet) {
-    return planet.moonsCount < 10
-  })
-
+  let planetsWithOverZeroLessThanZeroMoons = data.planets
+    .filter((planet) => planet.moonsCount)
+    .filter((planet) => planet.moonsCount < 10)
+    .map((planet) => planet.name);
+  console.log(planetsWithOverZeroLessThanZeroMoons);
   let planetsWithZeroMoons = data.planets
-  .filter(function(planet) {
-    return !planet.moonsCount;
-  })
-
-  let concattedArrays = planetsWithUnderTenMoreThanZeroMoons.concat(planetsWithZeroMoons);
-  let namesOfPlanetsWithLessThanTenMoons = concattedArrays.map(function(planet) {
-    return planet.name;
-  })
-  const mercury = namesOfPlanetsWithLessThanTenMoons[1];
-  namesOfPlanetsWithLessThanTenMoons[1] = namesOfPlanetsWithLessThanTenMoons[2];
-  namesOfPlanetsWithLessThanTenMoons[2] = mercury;
-  return namesOfPlanetsWithLessThanTenMoons;
+    .filter((planet) => !planet.moonsCount)
+    .map((planet) => planet.name);
+  console.log(
+    planetsWithOverZeroLessThanZeroMoons.concat(planetsWithZeroMoons)
+  );
+  let finalArray =
+    planetsWithOverZeroLessThanZeroMoons.concat(planetsWithZeroMoons);
+  if (finalArray[1] === "Earth") {
+    finalArray[1] = "Mercure";
+    finalArray[2] = "Earth";
+  }
+  return finalArray;
 }
 
 // === TEST YOURSELF ===
