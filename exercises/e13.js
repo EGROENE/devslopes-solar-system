@@ -6,15 +6,14 @@ import { data } from "../data/data";
 
 export function getAveragePlanetsTemperature(data) {
   // Your code goes here...
-  let allAvgTemps = data.planets.map(function(planet) {
-    return planet.avgTemp;
-  })
-  return allAvgTemps.reduce((acc, temp) => {
-    return acc + temp;
-  }) / allAvgTemps.length;
+  return (
+    data.planets
+      .map((planet) => planet.avgTemp)
+      .reduce((acc, cv) => {
+        return acc + cv;
+      }) / data.planets.length
+  );
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-13"
