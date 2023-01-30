@@ -6,18 +6,19 @@ import { data } from "../data/data";
 
 export function allPlanetsMoonsCount(data) {
   // Your code goes here...
-  let planetsWithMoons = data.planets.filter(function(planet) {
+  // Returns all objects of planets that have moons:
+  let planetsWithMoons = data.planets.filter(function (planet) {
     return planet.moonsCount;
-  })
-  let moonSums = planetsWithMoons.map(function(planet) {
+  });
+  // Put each planet's moonCount into array:
+  let moonSums = planetsWithMoons.map(function (planet) {
     return planet.moonsCount;
-  })
+  });
+  // Add planets' moonCounts together:
   return moonSums.reduce((acc, moonSum) => {
     return acc + moonSum;
-  }) 
+  });
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-12"
