@@ -7,19 +7,16 @@ import { data } from "../data/data";
 
 export function lowMoonsPlanets(data) {
   // Your code goes here...
-  let planetsWithOverZeroLessThanZeroMoons = data.planets
+  let planetsWithOverZeroUnderTenMoons = data.planets
     .filter((planet) => planet.moonsCount)
     .filter((planet) => planet.moonsCount < 10)
     .map((planet) => planet.name);
-  console.log(planetsWithOverZeroLessThanZeroMoons);
   let planetsWithZeroMoons = data.planets
     .filter((planet) => !planet.moonsCount)
     .map((planet) => planet.name);
-  console.log(
-    planetsWithOverZeroLessThanZeroMoons.concat(planetsWithZeroMoons)
-  );
+  // Due to the dumbass requirement that the order of the array names matter....
   let finalArray =
-    planetsWithOverZeroLessThanZeroMoons.concat(planetsWithZeroMoons);
+    planetsWithOverZeroUnderTenMoons.concat(planetsWithZeroMoons);
   if (finalArray[1] === "Earth") {
     finalArray[1] = "Mercure";
     finalArray[2] = "Earth";
