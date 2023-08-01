@@ -6,18 +6,10 @@ import { data } from "../data/data";
 
 export function allPlanetsMoonsCount(data) {
   // Your code goes here...
-  // Returns all objects of planets that have moons:
-  let planetsWithMoons = data.planets.filter(function (planet) {
-    return planet.moonsCount;
-  });
-  // Put each planet's moonCount into array:
-  let moonSums = planetsWithMoons.map(function (planet) {
-    return planet.moonsCount;
-  });
-  // Add planets' moonCounts together:
-  return moonSums.reduce((acc, moonSum) => {
-    return acc + moonSum;
-  });
+  let moonfulPlanets = data.planets.filter((planet) => planet.moonsCount);
+  return moonfulPlanets
+    .map((planet) => planet.moonsCount)
+    .reduce((acc, moonsCount) => acc + moonsCount);
 }
 
 // === TEST YOURSELF ===
