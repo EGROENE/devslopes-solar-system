@@ -6,24 +6,14 @@ import { data } from "../data/data";
 
 export function findPlanetNameByMoon(data, moonName) {
   // Your code goes here...
-  let planetsWithMoon = data.planets
-  // Put only planets that have moons into an array:
-  .filter(function(planet) {
-    return planet.moons;
-  })
-  // Put planets whose moons include moonName, into an array:
-  .map(function(planet) {
-    if ( planet.moons.includes(moonName)) {
-      return planet.name;
-    }
-  })
-  .filter(function(planet) {
-    return planet;
-  });
-  return planetsWithMoon[0];
+  // First, put only planets that have moons into an array:
+  // Then, filter out array of planets whose moons array includes moonName
+  // Then, return the first item in the array of names from array containing all planet names of match
+  return data.planets
+    .filter((planet) => planet.moons)
+    .filter((planet) => planet.moons.includes(moonName))
+    .map((planet) => planet.name)[0];
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"
